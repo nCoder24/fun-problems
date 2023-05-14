@@ -16,11 +16,10 @@ const chunk = (list, chunkSize) => {
 
 const join = (delimiter, ...list) => list.join(delimiter);
 
-const map = function (mapper, ...collections) {
-  return collections[0].map((_, index) =>
+const map = (mapper, ...collections) =>
+  collections[0].map((_, index) =>
     mapper(...collections.map((collection) => collection[index]))
   );
-};
 
 exports.chunk = chunk;
 exports.range = range;
