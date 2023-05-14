@@ -14,18 +14,12 @@ const chunk = (list, chunkSize) => {
   return marks.map((mark) => list.slice(mark - chunkSize, mark));
 };
 
-const join = (delimiter, ...list) => {
-  return list.join(delimiter);
-};
+const join = (delimiter, ...list) => list.join(delimiter);
 
 const map = function (mapper, ...collections) {
-  return collections[0].map(function (_, index) {
-    return mapper(
-      ...collections.map(function (collection) {
-        return collection[index];
-      })
-    );
-  });
+  return collections[0].map((_, index) =>
+    mapper(...collections.map((collection) => collection[index]))
+  );
 };
 
 exports.chunk = chunk;
