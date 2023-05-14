@@ -1,24 +1,22 @@
 const fs = require("fs");
-const { chunk, join, range, map } = require("./lib/array-utils");
+const { chunk, join, map, transpose } = require("./lib/array-utils");
 
 const render = (coolText) => map(join.bind(null, ""), ...coolText).join("\n");
 
 const applyFont = (font, text) =>
   render(text.split("").map((alphabet) => font[alphabet]));
 
+const upperCaseLetter = (index) =>
+  String.fromCharCode("A".charCodeAt(0) + index);
+
 const parse = (fontDescription) => {
-  const alphabets = String.fromCharCode(
-    ...range("A".charCodeAt(0), "Z".charCodeAt(0))
-  );
-  const [width, height, ...fontData] = fontDescription.split("\n");
+  const [width, height, ...rawFont] = fontDescription.split("\n");
+  const fontData = rawFont.slice(0, height).map((row) => chunk(row, width));
+  const glyphs = transpose(fontData);
 
-  const identity = (...elements) => elements;
-  const glyphs = map(
-    identity,
-    ...fontData.slice(0, height).map((row) => chunk(row, width))
+  return Object.fromEntries(
+    glyphs.map((glyph, i) => [upperCaseLetter(i), glyph])
   );
-
-  return Object.fromEntries(glyphs.map((glyph, i) => [alphabets[i], glyph]));
 };
 
 const readFile = (file) => {

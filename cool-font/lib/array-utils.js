@@ -18,8 +18,14 @@ const map = (mapper, ...collections) =>
     mapper(...collections.map((collection) => collection[index]))
   );
 
+const transpose = (matrix) => {
+  const identity = (...elements) => elements;
+  return map(identity, ...matrix);
+}
+
 exports.chunk = chunk;
 exports.range = range;
 exports.chunk = chunk;
 exports.map = map;
 exports.join = join;
+exports.transpose = transpose;
