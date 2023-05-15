@@ -7,7 +7,7 @@
 -> it takes a `font` file and a `text` to apply the font. `text` is a sequence of alphabets described in the font-file.
 
 ## What is a font?
--> a font is a particular size, weight and style of a typeface. It's a collectoin of glyphs.
+-> a font is a particular size, weight and style of a typeface. It's a collection of glyphs.
 
 ## How fonts are represented internally?
 ```js

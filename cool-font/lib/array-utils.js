@@ -1,5 +1,5 @@
 const range = (start, end, diff = 1) => {
-  const numberOfElements = Math.floor((end - start + 1) / diff);
+  const numberOfElements = Math.ceil((end - start + 1) / diff);
   return new Array(numberOfElements).fill().map((_, i) => i * diff + start);
 };
 
@@ -21,7 +21,7 @@ const map = (mapper, ...collections) =>
 const transpose = (matrix) => {
   const identity = (...elements) => elements;
   return map(identity, ...matrix);
-}
+};
 
 exports.chunk = chunk;
 exports.range = range;
