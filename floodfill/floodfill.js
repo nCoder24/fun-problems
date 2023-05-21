@@ -16,7 +16,7 @@ const floodfill = (start, isOnBoundary) => {
 };
 
 const main = () => {
-  const [start, ...isOnBoundary] = require("./resources/input1.json");
+  const [start, ...isOnBoundary] = require("./resources/input3.json");
   floodfill(start, makeBoundary(isOnBoundary));
 
   console.log(Object.values(pointsInside));
