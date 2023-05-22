@@ -1,4 +1,4 @@
-const { paintGrid, colorPoints, printPointsInInterval, makeCoursorInvisible, makeCoursorVisible } = require("./annimation");
+const { paintGrid, colorPoints, printPointsInInterval, makeCoursorInvisible } = require("./annimation");
 const { calculateInsidePoints } = require("./floodfill");
 
 const main = () => {
