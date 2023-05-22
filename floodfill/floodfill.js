@@ -2,11 +2,11 @@ const floodfill = (pointsInside, start, boundary) => {
   if (start in pointsInside || start in boundary) return;
   pointsInside[start] = start;
 
-  const [x, y] = start;
-  floodfill(pointsInside, [x, y + 1], boundary);
-  floodfill(pointsInside, [x, y - 1], boundary);
-  floodfill(pointsInside, [x + 1, y], boundary);
-  floodfill(pointsInside, [x - 1, y], boundary);
+  const [row, col] = start;
+  floodfill(pointsInside, [row, col + 1], boundary);
+  floodfill(pointsInside, [row, col - 1], boundary);
+  floodfill(pointsInside, [row + 1, col], boundary);
+  floodfill(pointsInside, [row - 1, col], boundary);
 };
 
 const calculateInsidePoints = (insidePoint, barriers) => {

@@ -1,20 +1,20 @@
 const esc = "\033";
 const style = (text, code) => `${esc}[${code}m${text}${esc}[0m`;
 const printAt = (text, line, column) => console.log(
-  `${esc}[${line};${column}f${text}`
+  `${esc}[${line + 1};${column * 2 + 1}f${text}`
 );
 
-const paintGrid = (height, width) => {
-  const whiteBox = style("  ", 47);
+const paintGrid = (row, col) => {
+  const yellowBox = style("  ", 43);
   console.clear();
-  console.log(`${whiteBox.repeat(width)}\n`.repeat(height));
+  console.log(`${yellowBox.repeat(col)}\n`.repeat(row));
 };
 
 const colorPoints = (points) => {
   const blackBox = style("  ", 40);
-  points.forEach((point) => {
-    printAt(blackBox, point[0] + 1, point[1] + 1);
-  })
+  points.forEach(([row, col]) => {
+    printAt(blackBox, row, col);
+  });
 };
 
 exports.paintGrid = paintGrid;
