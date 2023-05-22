@@ -1,25 +1,20 @@
-const makeBoundary = (points) => {
-  const lookup = Object.fromEntries(points.map(x => [x, true]));
-  return (point) => point in lookup;
-};
-
-const floodfill = (pointsInside, start, isOnBoundary) => {
-  if (start in pointsInside || isOnBoundary(start)) return;
+const floodfill = (pointsInside, start, boundary) => {
+  if (start in pointsInside || boundary[[start]]) return;
   pointsInside[start] = start;
 
-  floodfill(pointsInside, [start[0], start[1] + 1], isOnBoundary);
-  floodfill(pointsInside, [start[0], start[1] - 1], isOnBoundary);
-  floodfill(pointsInside, [start[0] + 1, start[1]], isOnBoundary);
-  floodfill(pointsInside, [start[0] - 1, start[1]], isOnBoundary);
+  const [x, y] = start;
+  floodfill(pointsInside, [x, y + 1], boundary);
+  floodfill(pointsInside, [x, y - 1], boundary);
+  floodfill(pointsInside, [x + 1, y], boundary);
+  floodfill(pointsInside, [x - 1, y], boundary);
 };
 
-const main = () => {
-  const [start, ...isOnBoundary] = require("./resources/input3.json");
+const calculateInsidePoints = (insidePoint, barriers) => {
   const pointsInside = {};
-  
-  floodfill(pointsInside, start, makeBoundary(isOnBoundary));
+  boundary = Object.fromEntries(barriers.map((point) => [point, true]));
 
-  console.log(Object.values(pointsInside));
-};
+  floodfill(pointsInside, insidePoint, boundary);
+  return Object.values(pointsInside);
+}
 
-main();
+exports.calculateInsidePoints = calculateInsidePoints;
