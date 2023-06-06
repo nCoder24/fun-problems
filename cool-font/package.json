@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "lib": "file:../lib"
+    "array-lib": "file:../array-lib",
+    "lib": "file:../array-lib"
   },
   "scripts": {
     "start": "node cool-font.js resources/font THISISCOOL"
@@ -9,7 +10,6 @@
   "version": "1.0.0",
   "description": "generates cool text",
   "main": "cool-font.js",
-  "devDependencies": {},
   "author": "",
   "license": "ISC"
 }
