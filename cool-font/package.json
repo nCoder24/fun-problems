@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "lib": "file:../lib"
+  },
+  "scripts": {
+    "start": "node cool-font.js resources/font THISISCOOL"
   }
 }
