@@ -1,0 +1,11 @@
+{
+  "name": "lib",
+  "version": "1.0.0",
+  "description": "library includes array-utils",
+  "main": "array-utils.js",
+  "scripts": {
+    "test": "node --test"
+  },
+  "author": "",
+  "license": "ISC"
+}
