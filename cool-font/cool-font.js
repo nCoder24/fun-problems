@@ -1,5 +1,5 @@
 const fs = require("fs");
-const { chunk, join, map, transpose } = require("./lib/array-utils");
+const { chunk, join, map, transpose } = require("lib");
 
 const render = (coolText) => map(join.bind(null, ""), ...coolText).join("\n");
 
