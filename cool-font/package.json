@@ -4,5 +4,12 @@
   },
   "scripts": {
     "start": "node cool-font.js resources/font THISISCOOL"
-  }
+  },
+  "name": "cool-font",
+  "version": "1.0.0",
+  "description": "generates cool text",
+  "main": "cool-font.js",
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC"
 }
